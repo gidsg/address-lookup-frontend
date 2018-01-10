@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block page_title %}
-  GOV.UK prototype kit
+  Address Lookup
 {% endblock %}
 
 {% block content %}
@@ -9,54 +9,41 @@
 <main id="content" role="main">
   <div class="grid-row">
     <div class="column-two-thirds">
+     <form action="/search" method="POST">
+				<div class="form-group">
+				<label class="form-label" for="line1">Line 1</label>
+				<input class="form-control" id="line1" type="text" name="line1">
+				</div>
 
-      <h1 class="heading-xlarge">
-        The GOV.UK prototype kit
-        <span class="heading-secondary">{{releaseVersion}}</span>
-      </h1>{{releaseVersion | log }}
-      <p>
-        This kit lets you rapidly create HTML prototypes of GOV.UK services.
-      </p>
+				<div class="form-group">
+				<label class="form-label" for="line2">Line 2</label>
+				<input class="form-control" id="line2" type="text" name="line2">
+				</div>
 
-      <p>
-        It contains all you need to prototype anything from simple static pages to complex, data-driven transactions.
-      </p>
+				<div class="form-group">
+				<label class="form-label" for="line3">Line 3</label>
+				<input class="form-control" id="line3" type="text" name="line3">
+				</div>
 
-      <h2 class="heading-medium">About this page</h2>
+				<div class="form-group">
+				<label class="form-label" for="line3">Line 4</label>
+				<input class="form-control" id="line4" type="text" name="line4">
+				</div>
 
-      <p>We recommend you add links to your prototype to this page, rather than delete it.
-        You'll find this page in the kit at '/app/views/index.html'.</p>
-      <p>You can change the service name by editing the file '/app/config.js'.</p>
+				<div class="form-group">
+				<label class="form-label" for="town">Town</label>
+				<input class="form-control" id="town" type="text" name="town">
+				</div>
 
-			<h2 class="heading-medium">Examples and documentation</h2>
+				<div class="form-group">
+				<label class="form-label" for="postcode">Postcode</label>
+				<input class="form-control" id="postcode" type="text" name="postcode">
+				</div>
 
-			<ul class="list list-bullet">
-				<li><a href="/docs/tutorials-and-examples">Example pages and documentation</a></li>
-				<li><a href="https://github.com/alphagov/govuk_prototype_kit">GitHub</a></li>
-			</ul>
+				<input type="hidden" name="limit" id='limit' value="100">
+				<input class="button" type="submit" value="Search">
+				</form>
 
-      <h2 class="heading-medium">Other resources</h2>
-
-			<ul class="list list-bullet">
-				<li>
-					<a href="https://govuk-elements.herokuapp.com/snippets/">
-						Guide to GOV.UK Elements
-					</a>
-				</li>
-				<li>
-					<a href="https://www.gov.uk/service-manual">
-						Service design manual
-					</a>
-				</li>
-				<li>
-					<a href="https://www.gov.uk/design-principles">
-						Government Digital Service Design Principles
-					</a>
-				</li>
-			</ul>
-
-    </div>
-  </div>
 </main>
 
 {% endblock %}

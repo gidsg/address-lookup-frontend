@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block page_title %}
+  Address Lookup
+{% endblock %}
+
+{% block content %}
+
+<main id="content" role="main">
+  <div class="grid-row">
+    <div class="column-two-thirds">
+        <table>
+            <thead>
+              <tr>
+                <th scope="col">Lat Long</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for item in api_response %}
+              <tr>
+                <th scope="row">{{ item.location }}</th>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+</main>
+
+{% endblock %}
+
+
