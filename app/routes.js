@@ -7,24 +7,25 @@ router.get('/', function (req, res) {
   res.render('index')
 })
 
-router.post('/search', function (req, res) {
+router.get('/search', function (req, res) {
+  console.log(req.query)
   //strip non populated keys
-  Object.keys(req.body).forEach((key) => (!req.body[key]) && delete req.body[key])
+  Object.keys(req.query).forEach((key) => (!req.query[key]) && delete req.query[key])
   //remove limit if only postcode populated
-  if (Object.keys(req.body).length == 2 && Object.keys(req.body).includes("postcode")) {
-  delete req.body.limit  
+  if (Object.keys(req.query).length == 2 && Object.keys(req.query).includes("postcode")) {
+  delete req.query.limit  
   }
 
-  if (Object.keys(req.body).length == 3 && Object.keys(req.body).includes("postcode") && Object.keys(req.body).includes("town") ) {
-    delete req.body.limit  
-    delete req.body.town 
+  if (Object.keys(req.query).length == 3 && Object.keys(req.query).includes("postcode") && Object.keys(req.query).includes("town") ) {
+    delete req.query.limit  
+    delete req.query.town 
     }
 
   const api_request = request('GET', 'http://localhost:9022/v2/uk/addresses', {
   'headers': {
     'X-LOCALHOST-Origin': 'test'
   },
-  'qs': req.body
+  'qs': req.query
 });
 
 const api_response = JSON.parse(api_request.getBody('utf-8'))
