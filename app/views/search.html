@@ -23,7 +23,7 @@
           map: map
         });
 
-        var {{ item.id }}ContentString = ' <div><strong>UPRN</strong> {{ item.uprn }}</div>'
+        var {{ item.id }}ContentString = ' <div><strong>UPRN</strong> {{ item.uprn }}</div> <br /><a href=#{{item.id}}>See Details</a>'
 
         var {{ item.id }}InfoWindow = new google.maps.InfoWindow({
           content: {{ item.id }}ContentString
@@ -51,7 +51,7 @@
             <tbody>
                 {% for item in api_response %}
               <tr>
-                <td scope="row">{{ item.uprn }}</td>
+                <td scope="row" id="{{ item.id }}">{{ item.uprn }}</td>
                 <td scope="row">{{ item.location[0] }},{{ item.location[1] }}</td>
                 <td scope="row">{{ item.address.lines | join(", ") }}</td>
                 <td scope="row">{{ item.address.county }}</td>
