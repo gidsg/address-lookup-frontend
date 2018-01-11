@@ -12,13 +12,21 @@
         <table>
             <thead>
               <tr>
+                <th scope="col">UPRN</th>
                 <th scope="col">Lat Long</th>
+                <th scope="col">Lines</th>
+                <th scope="col">County</th>
+                <th scope="col">Postcode</th>
               </tr>
             </thead>
             <tbody>
                 {% for item in api_response %}
               <tr>
-                <th scope="row">{{ item.location }}</th>
+                <td scope="row">{{ item.uprn }}</td>
+                <td scope="row">{{ item.location[0] }},{{ item.location[1] }}</td>
+                <td scope="row">{{ item.address.lines | join(", ") }}</td>
+                <td scope="row">{{ item.address.county }}</td>
+                <td scope="row">{{ item.address.postcode }}</td>
               </tr>
               {% endfor %}
             </tbody>
