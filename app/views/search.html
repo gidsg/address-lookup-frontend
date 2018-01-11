@@ -5,13 +5,6 @@
 {% endblock %}
 
 {% block content %}
-<style>
-    #map {
-     height: 400px;
-     width: 100%;
-    }
- </style>
-
 
 <main id="content" role="main">
       <div id="map"></div>
@@ -25,15 +18,22 @@
         });
         
         {% for item in api_response %}
-        new google.maps.Marker({
+        var {{ item.id }}Marker=new google.maps.Marker({
           position: {lat: {{ item.location[0] }}, lng: {{ item.location[1] }}},
           map: map
         });
-        {% endfor %}
-        new google.maps.Marker({
-          position: {lat: -25.363, lng: 131.044},
-          map: map
+
+        var {{ item.id }}ContentString = ' <div><strong>UPRN</strong> {{ item.uprn }}</div>'
+
+        var {{ item.id }}InfoWindow = new google.maps.InfoWindow({
+          content: {{ item.id }}ContentString
         });
+
+        {{ item.id }}Marker.addListener('click', function() {
+          {{ item.id }}InfoWindow.open(map, {{ item.id }}Marker);
+        });
+
+        {% endfor %}
       }
     </script>
   <div class="grid-row">
