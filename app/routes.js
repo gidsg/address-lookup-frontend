@@ -8,8 +8,10 @@ router.get('/', function (req, res) {
 })
 
 router.post('/search', function (req, res) {
-  console.log(req.body)
-  debugger
+  Object.keys(req.body).forEach((key) => (!req.body[key]) && delete req.body[key])
+  if (Object.keys(req.body).length == 2 && Object.keys(req.body).includes("postcode")) {
+  delete req.body.limit  
+  }
   const api_request = request('GET', 'http://localhost:9022/v2/uk/addresses', {
   'headers': {
     'X-LOCALHOST-Origin': 'test'
