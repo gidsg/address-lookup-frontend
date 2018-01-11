@@ -19,7 +19,7 @@ router.post('/search', function (req, res) {
     delete req.body.limit  
     delete req.body.town 
     }
-    
+
   const api_request = request('GET', 'http://localhost:9022/v2/uk/addresses', {
   'headers': {
     'X-LOCALHOST-Origin': 'test'
@@ -29,7 +29,7 @@ router.post('/search', function (req, res) {
 
 const api_response = JSON.parse(api_request.getBody('utf-8'))
 
-  res.render('search', {api_response: api_response} )
+  res.render('search', {api_response: api_response, api_key: process.env.GOOGLE_MAPS_API_KEY} )
 })
 
 // Add your routes here - above the module.exports line

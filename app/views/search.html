@@ -5,8 +5,37 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    #map {
+     height: 400px;
+     width: 100%;
+    }
+ </style>
+
 
 <main id="content" role="main">
+      <div id="map"></div>
+
+      <script>
+      function initMap() {
+        var uk = {lat: 54.393352, lng: -2.416992};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 5,
+          center: uk
+        });
+        
+        {% for item in api_response %}
+        new google.maps.Marker({
+          position: {lat: {{ item.location[0] }}, lng: {{ item.location[1] }}},
+          map: map
+        });
+        {% endfor %}
+        new google.maps.Marker({
+          position: {lat: -25.363, lng: 131.044},
+          map: map
+        });
+      }
+    </script>
   <div class="grid-row">
     <div class="column-two-thirds">
         <table>

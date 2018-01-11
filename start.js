@@ -1,6 +1,10 @@
 // Core dependencies
 const path = require('path')
 const fs = require('fs')
+require('dotenv').config()
+
+
+
 
 // Warn if node_modules folder doesn't exist
 const nodeModulesExists = fs.existsSync(path.join(__dirname, '/node_modules'))
