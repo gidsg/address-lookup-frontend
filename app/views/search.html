@@ -33,9 +33,15 @@
           content: {{ item.id }}ContentString
         });
 
+
         {{ item.id }}Marker.addListener('click', function() {
           {{ item.id }}InfoWindow.open(map, {{ item.id }}Marker);
         });
+
+        var elShowMap{{ item.id }} = document.getElementById("showMap{{ item.id }}");
+        elShowMap{{ item.id }}.addEventListener("click", function() {
+          {{ item.id }}InfoWindow.open(map, {{ item.id }}Marker);
+        }, false);
 
         {% endfor %}
         map.fitBounds(bounds);
@@ -61,6 +67,7 @@
                 <td scope="row">{{ item.address.lines | join(", ") }}</td>
                 <td scope="row">{{ item.address.county }}</td>
                 <td scope="row">{{ item.address.postcode }}</td>
+                <td scope="row"><a href="#map" id="showMap{{ item.id }}">Show on map</td>
               </tr>
               {% endfor %}
             </tbody>
