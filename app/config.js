@@ -27,4 +27,6 @@ module.exports = {
   // Enable or disable Browser Sync
   useBrowserSync: 'true',
 
+  addressFinderHost: 'http://localhost:9022'
+
 }

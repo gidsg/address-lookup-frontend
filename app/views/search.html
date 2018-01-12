@@ -37,7 +37,7 @@
       }
     </script>
   <div class="grid-row">
-    <div class="column-two-thirds">
+    <div class="column-full">
         <table>
             <thead>
               <tr>
@@ -50,8 +50,8 @@
             </thead>
             <tbody>
                 {% for item in api_response %}
-              <tr>
-                <td scope="row" id="{{ item.id }}">{{ item.uprn }}</td>
+              <tr id="{{ item.id }}">
+                <td scope="row">{{ item.uprn }}</td>
                 <td scope="row">{{ item.location[0] }},{{ item.location[1] }}</td>
                 <td scope="row">{{ item.address.lines | join(", ") }}</td>
                 <td scope="row">{{ item.address.county }}</td>
