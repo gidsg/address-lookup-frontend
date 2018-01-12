@@ -21,6 +21,8 @@ router.get('/search', function (req, res) {
     delete req.query.town 
     }
 
+    console.log(req.query)
+
   const api_request = request('GET', 'http://localhost:9022/v2/uk/addresses', {
   'headers': {
     'X-LOCALHOST-Origin': 'test'

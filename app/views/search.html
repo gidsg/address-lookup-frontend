@@ -16,12 +16,16 @@
           zoom: 5,
           center: uk
         });
+
+        var bounds = new google.maps.LatLngBounds();
         
         {% for item in api_response %}
         var {{ item.id }}Marker=new google.maps.Marker({
           position: {lat: {{ item.location[0] }}, lng: {{ item.location[1] }}},
           map: map
         });
+
+        bounds.extend({{ item.id }}Marker.position);
 
         var {{ item.id }}ContentString = ' <div><strong>UPRN</strong> {{ item.uprn }}</div> <br /><a href=#{{item.id}}>See Details</a>'
 
@@ -34,6 +38,7 @@
         });
 
         {% endfor %}
+        map.fitBounds(bounds);
       }
     </script>
   <div class="grid-row">
